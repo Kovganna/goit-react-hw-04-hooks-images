@@ -70,6 +70,7 @@ export default function App() {
       ) : (
         searchQuery !== '' && <NoFoundImage />
       )}
+      {loading && !showModal && <Loader />}
 
       {showModal && (
         <Modal onClose={toggleModal}>
@@ -78,12 +79,13 @@ export default function App() {
             alt={largeImage.tag}
             id={largeImage.id}
           />
+          {!loading && images[0] && <Button onClick={handleLoadMoreClick} />}
           <button type="button" onClick={toggleModal}>
             Close
           </button>
         </Modal>
       )}
-      {!loading && images[0] && <Button onClick={handleLoadMoreClick} />}
+
       <ToastContainer
         autoClose={3000}
         position="top-center"
