@@ -15,8 +15,8 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState('false');
-  const [showModal, setShowModal] = useState('false');
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [largeImage, setLargeImage] = useState({});
 
   useEffect(() => {
