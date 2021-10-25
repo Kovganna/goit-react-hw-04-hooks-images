@@ -21,9 +21,9 @@ export default function App() {
 
   useEffect(() => {
     if (!searchQuery) return;
-    setLoading(true);
 
     const searchImages = async () => {
+      setLoading(true);
       try {
         const images = await getPictures(searchQuery, page);
         setImages(prevImage => [...prevImage, ...images]);
@@ -36,6 +36,7 @@ export default function App() {
         setLoading(false);
       }
     };
+
     searchImages();
   }, [searchQuery, page]);
 
@@ -79,13 +80,12 @@ export default function App() {
             alt={largeImage.tag}
             id={largeImage.id}
           />
-          {!loading && images[0] && <Button onClick={handleLoadMoreClick} />}
           <button type="button" onClick={toggleModal}>
             Close
           </button>
         </Modal>
       )}
-
+      {!loading && images[0] && <Button onClick={handleLoadMoreClick} />}
       <ToastContainer
         autoClose={3000}
         position="top-center"
